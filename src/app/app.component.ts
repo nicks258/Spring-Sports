@@ -29,7 +29,7 @@ export class MyApp {
           console.info("Received in background");
         } else {
           console.info("Received in foreground");
-        };
+        }
       });
       this.fcm.onTokenRefresh().subscribe(token => {
         // backend.registerToken(token);

@@ -1,3 +1,50 @@
 page-login {
+.app_logo{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 44px;
+}
+.panel  {
+  max-width: 420px;
+  margin-top: 30px;
+  background-color: white;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin: auto; */
+  display: block;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  /* margin-bottom: 25px; */
+}
+  .panel_heading {
+    color: white;
+    font-weight: 600;
+    padding: 10px 4px;
+    transition: all .3s;
+    border: 1px solid transparent;
+    background-color: #279FBB;
+    padding-left: 10px;
+  }
+  .list{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+  }
+  .submit_button{
+    margin-top: 30px;
 
+  }
+
+  ion-alert{
+    opacity: 1;
+    transform: scale(1);
+    position: absolute!important;
+    top: 40% !important;
+  }
+  .forgot {
+    position: absolute;
+    top: 40%;
+  }
 }

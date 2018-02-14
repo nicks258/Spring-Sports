@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "361674276690",
+    "firebase_url": "https://spring-sports.firebaseio.com",
+    "project_id": "spring-sports",
+    "storage_bucket": "spring-sports.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361674276690:android:66694f6b8d33d53a",
+        "android_client_info": {
+          "package_name": "io.spring.sports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361674276690-fodhqpnu7dii1b49kdau3aksse6ktq55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ7-VR_e8gigTdgKZ0doT4Fv_pow6f5og"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

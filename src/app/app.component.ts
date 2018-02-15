@@ -24,7 +24,7 @@ export class MyApp {
         // backend.registerToken(token);
       });
       this.fcm.onNotification().subscribe(data => {
-        alert(JSON.stringify(data));
+        alert(JSON.stringify(data.aps.alert));
         if(data.wasTapped) {
           console.info("Received in background");
         } else {

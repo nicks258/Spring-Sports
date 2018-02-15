@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>361674276690-tdd50ibvfju5fqe1oqq8cgeqt6i8nams.apps.googleusercontent.com</string>
+	<string>597654403611-ocp7s0ihl3fffheq7rlq7tqnnk8oo232.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.361674276690-tdd50ibvfju5fqe1oqq8cgeqt6i8nams</string>
+	<string>com.googleusercontent.apps.597654403611-ocp7s0ihl3fffheq7rlq7tqnnk8oo232</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBRkpMVCbptp21X2KUjiAd6wbyz0UpMqtc</string>
+	<string>AIzaSyDp6qU5PjaJCcKY81EkIxczXCVtQnlCd9k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>361674276690</string>
+	<string>597654403611</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>io.spring.sports</string>
 	<key>PROJECT_ID</key>
-	<string>spring-sports</string>
+	<string>spring-sports-66f9a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>spring-sports.appspot.com</string>
+	<string>spring-sports-66f9a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:361674276690:ios:66694f6b8d33d53a</string>
+	<string>1:597654403611:ios:66694f6b8d33d53a</string>
 	<key>DATABASE_URL</key>
-	<string>https://spring-sports.firebaseio.com</string>
+	<string>https://spring-sports-66f9a.firebaseio.com</string>
 </dict>
 </plist>

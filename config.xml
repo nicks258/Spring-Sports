@@ -90,5 +90,6 @@
     </plugin>
     <plugin name="cordova-plugin-fcm" spec="^2.1.2" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="cordova-plugin-nativestorage" spec="^2.3.0" />
     <engine name="ios" spec="4.5.4" />
 </widget>

@@ -16,15 +16,15 @@
     <div class="list">
       <ion-item style="padding-left: 0px">
         <ion-label floating>Email</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input [(ngModel)]="email" name="email" type="text"></ion-input>
       </ion-item>
 
       <ion-item style="padding-left: 0px">
         <ion-label floating>Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
       </ion-item>
       <div class="submit_button">
-        <button style="background-color: #279FBB"  ion-button full color="#279FBB" >Login</button>
+        <button (click)="login()" style="background-color: #279FBB"  ion-button full color="#279FBB" >Login</button>
       </div>
       <p style="color:#afafaf" (click)="forgotPassword()">Forgot Password ?
       </p>

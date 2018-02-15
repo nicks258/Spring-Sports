@@ -10,6 +10,10 @@ import {FCM} from "@ionic-native/fcm";
 import {Firebase} from "@ionic-native/firebase";
 import {Push} from "@ionic-native/push";
 import {LoginPage} from "../pages/login/login";
+import { GlobalvarsProvider } from '../providers/globalvars/globalvars';
+import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 @NgModule({
   declarations: [
@@ -19,6 +23,8 @@ import {LoginPage} from "../pages/login/login";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     // IonicModule.forRoot(MyApp,{scrollAssist:false,
     //   autoFocusAssist:false}),
     IonicModule.forRoot(MyApp,{scrollAssist:false,
@@ -33,9 +39,13 @@ import {LoginPage} from "../pages/login/login";
   providers: [
     StatusBar,
     FCM,
+    HttpClientModule,
+    NativeStorage,
     Push,
+    HttpModule,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GlobalvarsProvider
   ]
 })
 export class AppModule {}

@@ -7,22 +7,20 @@ import { HomePage } from '../pages/home/home';
 import {Push, PushObject, PushOptions} from "@ionic-native/push";
 import {FCM} from "@ionic-native/fcm";
 import {LoginPage} from "../pages/login/login";
+import {GlobalvarsProvider} from "../providers/globalvars/globalvars";
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public alertCtrl:AlertController,public push: Push,private fcm: FCM) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public alertCtrl:AlertController,public push: Push,private fcm: FCM,public globalVar:GlobalvarsProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.fcm.subscribeToTopic('all');
-      this.fcm.getToken().then(token => {
-        // backend.registerToken(token);
-      });
+
       this.fcm.onNotification().subscribe(data => {
         alert(JSON.stringify(data.aps.alert));
         if(data.wasTapped) {
@@ -31,9 +29,11 @@ export class MyApp {
           console.info("Received in foreground");
         }
       });
-      this.fcm.onTokenRefresh().subscribe(token => {
-        // backend.registerToken(token);
-      });
+      // this.fcm.onTokenRefresh().subscribe(token => {
+      //   console.log("Token->" + token);
+      //   globalVar.setMyGlobalVar(token);
+      //   // backend.registerToken(token);
+      // });
       // fcm.getToken().then(token => {
       //   console.log(token);
       // });
@@ -55,7 +55,7 @@ export class MyApp {
       // }, function(error) {
       //   console.error(`Error: ${error}`);
       // });
-      this.pushsetup();
+      // this.pushsetup();
     });
   }
   pushsetup() {

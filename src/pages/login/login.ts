@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams, Platform} from 'ionic-angular';
 import {Http} from "@angular/http";
 import {GlobalvarsProvider} from "../../providers/globalvars/globalvars";
-import {NativeStorage} from "@ionic-native/native-storage";
+
 import {HomePage} from "../home/home";
 import {FCM} from "@ionic-native/fcm";
+
+import {DatabaseProvider} from "../../providers/database/database";
 /**
  * Generated class for the LoginPage page.
  *
@@ -19,8 +21,20 @@ import {FCM} from "@ionic-native/fcm";
 })
 export class LoginPage {
   email;
+  nameFromServer;
+  developers = [];
+  developer = {};
   password;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl:AlertController,private fcm: FCM,public http:Http,public loadingCtrl:LoadingController,public globalVar:GlobalvarsProvider,public native:NativeStorage) {
+  constructor(public platform:Platform, public navCtrl: NavController, public navParams: NavParams,
+              public alertCtrl:AlertController,private fcm: FCM,public http:Http,public loadingCtrl:LoadingController,
+              public globalVar:GlobalvarsProvider,public databaseprovider:DatabaseProvider) {
+    // this.platform.ready().then(() => {
+    //
+    // });
+
+
+    //
+
   }
 
   ionViewDidLoad() {
@@ -88,16 +102,39 @@ export class LoginPage {
         loadingPopup.dismiss();
         let data_to_use = data.json();
         console.log("Name->"+ data.json().user_details.name);
-        this.native.setItem('name',data.json().user_details.name);
-        this.navCtrl.push(HomePage);
+        this.nameFromServer = data.json().user_details.name;
+        // themail = data_to_use.user_details.email;
+        // let password = this.password;
+        this.addDeveloper(this.nameFromServer,this.email,this.password,token);
         console.log("Result-> "+JSON.stringify(data_to_use));
       },error2 => {
         //        loadingPopup.dismiss();
         console.log("error->" + error2);
       });
-      this.globalVar.setMyGlobalVar(token);
+      // this.globalVar.setMyGlobalVar(token);
     });
 
+  }
+  saveUserDetails(){
+  }
+  addDeveloper(name,email,password,deviceid) {
+
+    console.log("Button Clicked addDeveloper()");
+    //TODO Code for inserting in sqlite
+    this.databaseprovider.addDeveloper(name,email,password,deviceid)
+      .then(data => {
+        this.loadDeveloperData();
+      });
+    // this.sendToServer();
+    this.developer = {};
+    this.navCtrl.setRoot(HomePage,{},{animate: true, animation:'transition',duration:300, direction: 'forward'})
+
+  }
+  loadDeveloperData() {
+    this.databaseprovider.getAllDevelopers().then(data => {
+      this.developers = data;
+      console.log(data);
+    })
   }
 }
 

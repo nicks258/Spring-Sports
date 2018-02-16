@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS people(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT , email TEXT , password TEXT , deviceid TEXT);
+

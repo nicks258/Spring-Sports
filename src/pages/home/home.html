@@ -1,14 +1,26 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Notifications</ion-title>
   </ion-navbar>
+
+  <ion-toolbar >
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="ios-log-out"></ion-icon>
+        Logout
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <ion-list>
+    <ion-item [ngStyle]="{'overflow': visible}"   style="overflow: visible" *ngFor="let d of notifications_array">
+      <!--<ion-icon color="primary" item-right [name]="d.icon"></ion-icon>-->
+      {{d.notification}}
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -7,19 +7,8 @@
         <ion-icon name="ios-log-out"></ion-icon>
         Logout
       </button>
-      <p style="color: #fff; padding-right: 10px" align="right"> Welcome {{nameServer}}</p>
+      <p style="color: #fff; padding-right: 10px" align="right"> Welcome Sumit</p>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="background-color: #eeeeee" padding>
-
-  <ion-list >
-    <ion-card padding  *ngFor="let d of notifications_array">
-    <ion-item text-wrap>
-      <!--<ion-icon color="primary" item-right [name]="d.icon"></ion-icon>-->
-      {{d.notification}}
-    </ion-item>
-    </ion-card>
-  </ion-list>
-</ion-content>

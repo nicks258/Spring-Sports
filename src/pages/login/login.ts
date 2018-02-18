@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams, Platform} from 'ionic-angular';
 import {Http} from "@angular/http";
 import {GlobalvarsProvider} from "../../providers/globalvars/globalvars";
-
+import { NativeStorage } from '@ionic-native/native-storage';
 import {HomePage} from "../home/home";
 import {FCM} from "@ionic-native/fcm";
-
 import {DatabaseProvider} from "../../providers/database/database";
 /**
  * Generated class for the LoginPage page.
@@ -27,7 +26,8 @@ export class LoginPage {
   password;
   constructor(public platform:Platform, public navCtrl: NavController, public navParams: NavParams,
               public alertCtrl:AlertController,private fcm: FCM,public http:Http,public loadingCtrl:LoadingController,
-              public globalVar:GlobalvarsProvider,public databaseprovider:DatabaseProvider) {
+              public globalVar:GlobalvarsProvider,public databaseprovider:DatabaseProvider
+              ,private nativeStorage: NativeStorage) {
     // this.platform.ready().then(() => {
     //
     // });
@@ -103,6 +103,12 @@ export class LoginPage {
         let data_to_use = data.json();
         console.log("Name->"+ data.json().user_details.name);
         this.nameFromServer = data.json().user_details.name;
+        this.nativeStorage.setItem('login_true',"true");
+        this.nativeStorage.setItem('name',this.nameFromServer);
+        this.nativeStorage.setItem('email',this.email);
+        this.nativeStorage.setItem('token',token);
+        this.nativeStorage.setItem('password',this.password);
+        // this.storage.set('loggedInUser', 'true');
         // themail = data_to_use.user_details.email;
         // let password = this.password;
         this.addDeveloper(this.nameFromServer,this.email,this.password,token);

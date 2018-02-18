@@ -7,6 +7,7 @@ import {DatabaseProvider} from "../../providers/database/database";
 import {Http} from "@angular/http";
 import {SQLiteObject} from "@ionic-native/sqlite";
 import {LoginPage} from "../login/login";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 
 @Component({
@@ -22,9 +23,23 @@ export class HomePage {
   passwordServer;
   deviceId;
   loadingPopup;
-  constructor(public http:Http,public navCtrl: NavController,public statusBar:StatusBar,public platform:Platform,public loadingCtrl:LoadingController,public databaseprovider:DatabaseProvider) {
+  constructor(public http:Http,public navCtrl: NavController,public statusBar:StatusBar,public platform:Platform,
+              public loadingCtrl:LoadingController,public databaseprovider:DatabaseProvider,private nativeStrorage:NativeStorage) {
     this.statusBar.hide();
-   this.loadDeveloperData();
+   // this.loadDeveloperData();
+   this.nativeStrorage.getItem('email').then(data=>{
+     this.emailServer = data;
+     this.nativeStrorage.getItem('password').then(data=>{
+       this.passwordServer = data;
+       this.nativeStrorage.getItem('name').then(data=>{
+         this.nameServer = data;
+         this.nativeStrorage.getItem('token').then(data=>{
+           this.deviceId = data;
+           this.fetchDashboard(this.emailServer,this.passwordServer);
+         })
+       })
+     })
+   });
    this.loadingPopup = this.loadingCtrl.create({
       content: "Fetching Notification ...",
       spinner: 'circles'
@@ -37,28 +52,28 @@ export class HomePage {
     });
   }
 
-  loadDeveloperData() {
-    console.log("Loading Home Page");
-    this.databaseprovider.getAllDevelopers().then(data => {
-      let developers = [];
-      developers = data;
-      // console.log(data);
-      let env = this;
-      // developers.forEach();
-      let responce = functionToIterate();
-      function  functionToIterate(){
-        for(let dev of developers)
-        {
-          env.nameServer = dev.name;
-          env.emailServer = dev.email;
-          env.passwordServer = dev.password;
-          env.deviceId = dev.deviceid;
-          env.fetchDashboard(dev.email,dev.password);
-          console.log("DATA->>"+dev.name + "->" + dev.email + "->" + dev.password + "->" + dev.deviceid);
-        }
-      }
-    })
-  }
+  // loadDeveloperData() {
+  //   console.log("Loading Home Page");
+  //   this.databaseprovider.getAllDevelopers().then(data => {
+  //     let developers = [];
+  //     developers = data;
+  //     // console.log(data);
+  //     let env = this;
+  //     // developers.forEach();
+  //     let responce = functionToIterate();
+  //     function  functionToIterate(){
+  //       for(let dev of developers)
+  //       {
+  //         env.nameServer = dev.name;
+  //         env.emailServer = dev.email;
+  //         env.passwordServer = dev.password;
+  //         env.deviceId = dev.deviceid;
+  //         env.fetchDashboard(dev.email,dev.password);
+  //         console.log("DATA->>"+dev.name + "->" + dev.email + "->" + dev.password + "->" + dev.deviceid);
+  //       }
+  //     }
+  //   })
+  // }
   fetchDashboard(email,password){
 
     let body = new FormData();

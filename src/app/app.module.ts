@@ -7,6 +7,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {FCM} from "@ionic-native/fcm";
+import { SamplePage } from '../pages/sample/sample';
 
 import {Push} from "@ionic-native/push";
 import {LoginPage} from "../pages/login/login";
@@ -16,11 +17,13 @@ import {HttpClientModule} from "@angular/common/http";
 import { DatabaseProvider } from '../providers/database/database';
 import {SQLite} from "@ionic-native/sqlite";
 import {IonicStorageModule} from "@ionic/storage";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    SamplePage,
     LoginPage,
   ],
   imports: [
@@ -37,6 +40,7 @@ import {IonicStorageModule} from "@ionic/storage";
   entryComponents: [
     MyApp,
     HomePage,
+    SamplePage,
     LoginPage
   ],
   providers: [
@@ -47,6 +51,7 @@ import {IonicStorageModule} from "@ionic/storage";
     StatusBar,
     HttpModule,
     SQLite,
+    NativeStorage,
     SplashScreen,
     SQLitePorter,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
